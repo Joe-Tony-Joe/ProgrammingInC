@@ -1,4 +1,4 @@
-// 生成质数表
+// 生成质数表的程序(修订版) 
 #include <stdio.h>
 
 int main(void){
@@ -8,14 +8,13 @@ int main(void){
 	for(p = 2; p <= 50; ++p){
 		isPrime = 1;
 		
-		for(d = 2; d < p; ++d)
-			if(p % d == 0)
+		for(d = 2; d < p; ++d){
+			if(p % d == 0){
 				isPrime = 0;
-			
-		if(isPrime != 0)
-			printf("%i ", p);	
+			}
+		if(isPrime != 0){
+			printf("%i ", p);
+		}
+		
 	}
-	
-	printf("\n");
-	return 0;
 } 
