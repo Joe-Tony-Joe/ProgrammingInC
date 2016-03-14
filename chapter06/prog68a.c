@@ -20,7 +20,7 @@ int main(void){
 		}else{
 			printf("%.2f\n", value1 / value2);
 		}
-	}else{
+	}else{ 
 		printf("Unknown operator.\n");
 	}
 	
