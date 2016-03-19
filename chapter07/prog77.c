@@ -14,6 +14,7 @@ int main(void){
 	// 获取整数和基数
 	
 	printf("Number to be converted? ");
+	// 长整型数的格式化输入符号: %ld 
 	scanf("%ld", &numberToConvert);
 	printf("Base? ");
 	scanf("%i", &base);
