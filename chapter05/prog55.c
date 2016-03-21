@@ -1,5 +1,14 @@
-// 使用嵌套for循环 
+// 使用嵌套for循环 ，调用新版本的函数 
 #include <stdio.h>
+
+int calculateTriangularNumber(int n){
+	int i, triangularNumber = 0;
+	
+	for(i = 1; i <= n; ++i)
+		triangularNumber += i;
+	
+	return triangularNumber;
+}
 
 int main (void){
 	int n, number, triangularNumber, counter;
@@ -8,11 +17,7 @@ int main (void){
 		printf("What triangluar number do you want? ");
 		scanf ("%i", &number);
 	
-		triangularNumber = 0;
-	
-		for( n = 1; n <= number; n++){
-			triangularNumber += n;
-		}
+		triangularNumber = calculateTriangularNumber(number);
 	
 		printf("Triangular number %i is %i\n", number, triangularNumber);
 	}
