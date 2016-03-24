@@ -55,12 +55,12 @@ int numberOfDays(struct date d){
 
 // 判断是否为闰年的函数
 bool isLeapYear(struct date d){
-		bool leapYearFlag;
+	bool leapYearFlag;
 		
-		if((d.year % 4 == 0 && d.year % 100 != 0 )|| d.year % 400 == 0)
-			leapYearFlag = true; // 闰年
-		else
-			leapYearFlag = false; // 非闰年
+	if((d.year % 4 == 0 && d.year % 100 != 0 )|| d.year % 400 == 0)
+		leapYearFlag = true; // 闰年
+	else
+		leapYearFlag = false; // 非闰年
 			
-		return leapYearFlag;
+	return leapYearFlag;
 }
