@@ -1,4 +1,4 @@
-//  计算下一天日期的程序(第二版)
+//  将9.4中的dateUpdate函数替换为使用复合字面量的版本
 
 #include <stdio.h>
 #include <stdbool.h>
@@ -15,21 +15,13 @@ struct date dateUpdate(struct date today){
 	int numberOfDays(struct date d);
 	
 	if(today.day != numberOfDays(today)){
-		tomorrow.day = today.day + 1;
-		tomorrow.month = today.month;
-		tomorrow.year = today.year;
+		tomorrow = (struct date){today.month, today.day + 1, today.year};
 	}
 	else if(today.month == 12){
-		// 年尾
-		tomorrow.day = 1;
-		tomorrow.month = 1;
-		tomorrow.year = today.year + 1;
+		tomorrow = (struct date){1, 1, today.year + 1};
 	}
 	else{
-		// 月末
-		tomorrow.day = 1;
-		tomorrow.month = today.month + 1;
-		tomorrow.year = today.year;
+		tomorrow = (struct date){today.month + 1, 1, today.year};
 	}
 	
 	return tomorrow;
@@ -65,12 +57,12 @@ int main(void){
 	struct date dateUpdate(struct date today);
 	struct date thisDay, nextDay;
 	
-	printf("Enter today's date (mm dd yyyy)\n");
+	printf("Enter today's date (mm dd yyyy) \n");
 	scanf("%i /%i /%i", &thisDay.month, &thisDay.day, &thisDay.year);
 	
 	nextDay = dateUpdate(thisDay);
 	
-	printf("Tomorrow's date is %i/%i/%.2i.\n", nextDay.month, 
+	printf("Tomorrow's date is %i /%i /%.2i.\n", nextDay.month, 
 		nextDay.day, nextDay.year % 100);
 		
 	return 0;

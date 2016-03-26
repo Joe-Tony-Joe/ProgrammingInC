@@ -1,7 +1,31 @@
-//  计算下一天日期的程序(第二版)
-
+// clockKeeper
+// 以秒为单位更新时间的程序
 #include <stdio.h>
 #include <stdbool.h>
+
+struct time{
+	int hour;
+	int minutes;
+	int seconds;
+} ;
+
+// 以秒为单位更新时间的函数
+struct time timeUpdate(struct time now){
+	++now.seconds;
+	if(now.seconds == 60){
+		now.seconds = 0;
+		++now.minutes;
+		
+		if(now.minutes == 60){
+			now.minutes = 0;
+			++now.hour;
+			
+			if(now.hour == 24)
+				now.hour = 0;
+		}
+	}
+	return now;
+}
 
 struct date{
 	int month;
@@ -20,13 +44,11 @@ struct date dateUpdate(struct date today){
 		tomorrow.year = today.year;
 	}
 	else if(today.month == 12){
-		// 年尾
 		tomorrow.day = 1;
 		tomorrow.month = 1;
 		tomorrow.year = today.year + 1;
 	}
 	else{
-		// 月末
 		tomorrow.day = 1;
 		tomorrow.month = today.month + 1;
 		tomorrow.year = today.year;
@@ -61,18 +83,35 @@ bool isLeapYear(struct date d){
 	return leapYearFlag;
 }
 
+struct dateAndTime{
+	struct time now;
+	struct date d;
+};
+
+struct dateAndTime clockKeeper (struct dateAndTime dat){
+	struct time timeUpdate(struct time now);
+	struct date dateUpdate(struct date d);
+	
+	dat.now = timeUpdate(dat.now);
+	// 时间过午夜则更新日期
+	if(dat.now.hour == 0)
+		dat.d = dateUpdate(dat.d);
+		
+	return dat;
+};
+
 int main(void){
-	struct date dateUpdate(struct date today);
-	struct date thisDay, nextDay;
+	struct dateAndTime clockKeeper(struct dateAndTime dat);
+	struct dateAndTime dat;
 	
-	printf("Enter today's date (mm dd yyyy)\n");
-	scanf("%i /%i /%i", &thisDay.month, &thisDay.day, &thisDay.year);
+	// 使用复合字面量赋值
+	dat.now = (struct time){23, 59, 59};
+	dat.d = (struct date){2, 28, 2016};
 	
-	nextDay = dateUpdate(thisDay);
+	dat = clockKeeper(dat);
 	
-	printf("Tomorrow's date is %i/%i/%.2i.\n", nextDay.month, 
-		nextDay.day, nextDay.year % 100);
+	printf("%i:%i:%i: %i/%i/%i", dat.now.hour, dat.now.minutes, dat.now.seconds,
+		dat.d.month, dat.d.day, dat.d.year);
 		
 	return 0;
 }
-	
