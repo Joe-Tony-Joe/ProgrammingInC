@@ -19,7 +19,8 @@ int countWords(const char string[]){
 		if(alphabetic(string[i])){
 			if(lookingForWord){
 				++wordCount;
-				// 扫描到首字母计数器加1后，标志位设置为false，对字符串字母的循环继续遍历
+				// 扫描到首字母计数器加1后，标志位设置为false，
+				// 不进行任何处理，对字符串字母的循环继续遍历
 				lookingForWord = false;
 			}
 		}
