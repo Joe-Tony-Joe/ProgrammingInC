@@ -7,6 +7,7 @@ int arraySum(int *array, const int n){
 	int sum = 0;
 	int * const arrayEnd = array + n;
 	
+	// array本身值的修改不会影响数组values的内容
 	for(; array < arrayEnd; ++array)
 		sum += *array;
 	
