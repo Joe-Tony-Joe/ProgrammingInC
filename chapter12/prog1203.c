@@ -17,7 +17,7 @@ int main(void){
 	printf("%o\t%o\n", shift(w1, 5), w1 << 5);
 	printf("%o\t%o\n", shift(w1, -6), w1 >> 6);
 	printf("%o\t%o\n", shift(w2, 0), w2 >> 0);
-	printf("%o\n", shift(shift(w1, -3), 3));
+	printf("%o\n", shift(shift(w1, -3), 3)); //将低3位设置为0
 	
 	return 0;
 }
