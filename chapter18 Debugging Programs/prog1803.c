@@ -1,4 +1,5 @@
 // 定义调试宏DEBUG
+// #define DEBUG(fmt, ...) 
 #include <stdio.h>
 #include <stdlib.h>
 #define DEBUG(fmt, ...) fprintf(stderr, fmt, __VA_ARGS__)
