@@ -5,7 +5,7 @@
 enum month {january = 1, february, march, april, may, june,
 		july, august, september, october, novermber, december };
 
-char *monthName(enum month aMonth){
+char (*) monthName(enum month aMonth){
 	return &aMonth;
 }
 
